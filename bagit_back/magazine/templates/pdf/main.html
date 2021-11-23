@@ -1,0 +1,16 @@
+{% extends 'pdf/base.html' %}
+
+{% block title %}
+check
+{% endblock title %}
+
+{% block c %}
+  {% for invoice in object_list %}
+      {{invoice.title}}
+
+      <a href="{% url 'invoice' invoice.pk %}" ><button class="btn btn-primary" > pdf </button></a>
+      <br>
+      <hr>
+  {% endfor %}
+
+{% endblock c %}

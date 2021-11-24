@@ -3,17 +3,24 @@ from xhtml2pdf import pisa
 from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from rest_framework.viewsets import GenericViewSet,ReadOnlyModelViewSet
-from .serializers import  PostSerializers,PhotoSerializers
-
 import io
 from django.http import FileResponse, HttpResponse
 from reportlab.pdfgen import canvas
 
 
-
-from .models import Post,Photo
+from .serializers import  PostSerializers,PhotoSerializers, CommentSerializers
+from .models import Post,Photo,Comment
 
 from rest_framework import mixins, viewsets,permissions
+
+
+class CommentViewSet(ReadOnlyModelViewSet):
+    serializer_class = CommentSerializers
+    queryset = Comment.objects.all()
+
+    def perform_create(self, serializer):
+        author=self.request.author
+        serializer.save(author=author)
 
 class PhotoViewSet(ReadOnlyModelViewSet):
     serializer_class = PhotoSerializers
@@ -63,4 +70,6 @@ def custom_render_pdf_view(request, *argsm, **kwargs):
         # if error then show some funy view
         if pisa_status.err:
             return HttpResponse('We had some errors <pre>' + html + '</pre>')
-        return responsek
+        return response
+
+

@@ -1,36 +1,27 @@
-import { Observable } from 'rxjs';
-import { Component,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ApiService } from './api.service';
 
-import { HttpService } from './api.service';
-import { Posts } from './posts';
-import {map} from "rxjs/operators";
-
-
-// @ts-ignore
 @Component({
-  selector: 'purchase-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [HttpService]
+  providers: [ApiService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  posts = [{title: 'test',text:'titan',created_date:''}];
 
 
-  constructor(private _blogPostService: HttpService) {
+  constructor(private api: ApiService) {
+    this.getMovies();
   }
-   postsList:any=[];
-
-
-  ngOnInit(): void {
-    this.refreshDepList();
+  getMovies = () => {
+    this.api.getAllMovies().subscribe(
+      data => {
+        this.posts = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
-
-
-  refreshDepList(){
-    this._blogPostService.getDepList().subscribe(data=>{
-      this.postsList=data;
-    });
-  }
-
-
 }

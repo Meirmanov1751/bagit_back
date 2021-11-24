@@ -14,7 +14,4 @@ from .views import custom_render_pdf_view,CheckListViews
 urlpatterns = [
     path('pdf/',CheckListViews.as_view(),name='1'),
     path('post/<pk>/',custom_render_pdf_view,name='invoice')
-
-
-
 ]

@@ -1,0 +1,12 @@
+<h2>List of movies</h2>
+<ul>
+  <li *ngFor="let movie of posts">
+    <h2 (click)="movieClicked(movie)">{{movie.title}}</h2>
+  </li>
+</ul>
+<hr>
+Title <input type="text" [(ngModel)]="selectedMovie.title"/><br>
+Text <input type="text" [(ngModel)]="selectedMovie.text"/><br>
+
+
+<button *ngIf="selectedMovie.id == -1" (click)="createMovie()"> POST </button>

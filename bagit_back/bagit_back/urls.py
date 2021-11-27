@@ -28,6 +28,10 @@ router = DefaultRouter()
 router.registry.extend(post_router.registry)
 app_name='check'
 urlpatterns = [
+
+
+    url(r'^auth/', include('djoser.urls')),
+    url(r'^auth/', include('djoser.urls.authtoken')),
     path('magazine/', include('magazine.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls))

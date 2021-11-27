@@ -2,12 +2,12 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 
 
-from magazine.views import PostViewSet,PhotoViewSet
+from magazine.views import PostViewSet
 
 router = DefaultRouter()
 
 router.register(r'^posts', PostViewSet)
-router.register(r'^posts/photo', PhotoViewSet)
+
 
 from .views import custom_render_pdf_view,CheckListViews
 

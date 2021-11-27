@@ -36,6 +36,7 @@ CORS_ALLOWED_ORIGINS = [
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -43,9 +44,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_celery_results',
+    'rest_framework_simplejwt',
+    'djoser',
+    'rest_framework.authtoken',
+
+    'allauth',
+    'allauth.account',
 
     'magazine',
-    'authorization',
+
 ]
 
 MIDDLEWARE = [
@@ -153,3 +160,17 @@ CACHES = {
         'LOCATION': 'my_cache_table',
     }
 }
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+AUTHENTICATION_BACKENDS = (
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1

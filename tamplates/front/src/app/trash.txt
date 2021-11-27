@@ -41,3 +41,7 @@ ngOnInit() {
 
 
 }
+
+            <ng-template [ngTemplateOutlet]="loadTemplate(user)"
+                        [ngTemplateOutletContext]="{ $implicit: user}">
+            </ng-template>

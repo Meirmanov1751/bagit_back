@@ -8,13 +8,13 @@ from django.http import FileResponse, HttpResponse
 from reportlab.pdfgen import canvas
 
 
-from .serializers import  PostSerializers,PhotoSerializers, CommentSerializers
-from .models import Post,Photo,Comment
+from .serializers import  PostSerializers, CommentSerializers
+from .models import Posts,Comment
 
 from rest_framework import mixins, viewsets,permissions
 
 
-class CommentViewSet(ReadOnlyModelViewSet):
+class CommentViewSet(mixins.UpdateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin,mixins.CreateModelMixin,mixins.DestroyModelMixin,GenericViewSet):
     serializer_class = CommentSerializers
     queryset = Comment.objects.all()
 
@@ -22,36 +22,51 @@ class CommentViewSet(ReadOnlyModelViewSet):
         author=self.request.author
         serializer.save(author=author)
 
-class PhotoViewSet(ReadOnlyModelViewSet):
-    serializer_class = PhotoSerializers
-    queryset = Photo.objects.all()
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
 
-    def perform_create(self, serializer):
-        user=self.request.user
-        serializer.save(user=user)
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
-class PostViewSet(ReadOnlyModelViewSet):
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+class PostViewSet(mixins.UpdateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin,mixins.CreateModelMixin,mixins.DestroyModelMixin,GenericViewSet):
     serializer_class = PostSerializers
-    queryset = Post.objects.all()
+    queryset = Posts.objects.all()
 
     def perform_create(self, serializer):
-        user=self.request.user
-        serializer.save(user=user)
+        serializer.save()
 
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
 
 
 class CheckListViews(ListView):
-    mosel=Post
+    mosel=Posts
     template_name='pdf/main.html'
 
     def get_queryset(self):
         """Return Schools """
-        return Post.objects.all()
+        return Posts.objects.all()
 
 def custom_render_pdf_view(request, *argsm, **kwargs):
         pk = kwargs.get('pk')
-        invoice = get_object_or_404(Post, pk=pk)
+        invoice = get_object_or_404(Posts, pk=pk)
 
         template_path = 'pdf/invoice.html'
         context = {'invoice': invoice}

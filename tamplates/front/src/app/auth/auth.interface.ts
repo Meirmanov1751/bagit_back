@@ -6,7 +6,6 @@ export class Login {
 export class Registration {
   username: string;
   password: string;
-  email: string;
 }
 
 export class Token {

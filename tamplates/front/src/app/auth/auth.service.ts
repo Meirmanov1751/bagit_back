@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
 import {Login,Verify,Token,Registration} from './auth.interface';
@@ -12,13 +12,12 @@ import {tap} from 'rxjs/operators';
 export class UserService {
   private token: string | null = null;
   baseurl = "http://127.0.0.1:8000";
-  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) {
   }
 
   login(model: Login): Observable<Token> {
-    return this.http.post<Token>(this.baseurl + `/auth/jwt/create/`, model)
+    return this.http.post<Token>(this.baseurl + `/auth/token/login/`, model)
       .pipe(
         tap(
           (token: Token) => {
@@ -37,12 +36,11 @@ export class UserService {
     return this.http.post<any>(this.baseurl + `/auth/users/activation/`, model);
   }
 
-  getToken(): string|null {
-    return localStorage.getItem('token');
+  getToken(): string {
+    return localStorage.getItem('token')!;
   }
 
   isAuth(): boolean {
-    // @ts-ignore
     this.setToken(this.getToken());
     return !!this.token;
   }

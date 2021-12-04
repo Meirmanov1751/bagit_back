@@ -1,10 +1,11 @@
 import { Component,OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from './auth.service';
+import {UserService} from '../../auth.service';
 import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-singin',
   templateUrl: './singin.component.html',
+  providers:[UserService]
 })
 export class SingInComponent implements OnInit {
   form: FormGroup;
@@ -18,11 +19,6 @@ export class SingInComponent implements OnInit {
     this.form = new FormGroup({
       username: new FormControl(
         null, [Validators.required, Validators.minLength(4)]
-      ),
-      email: new FormControl(
-        null, [
-          Validators.required, Validators.email, Validators.minLength(4)
-        ]
       ),
       password: new FormControl(
         null, [Validators.required, Validators.minLength(8)]

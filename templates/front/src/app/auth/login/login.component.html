@@ -1,0 +1,22 @@
+<form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+  <span *ngIf="errorRes">
+      {{errorRes}}
+  </span>
+  <div class="container">
+    <div class="login-box">
+      <p class="text">Username:</p>
+      <input class="login_in" type="text" formControlName="username">
+      <!--    form.get('username').invalid || -->
+      <span class="field-error" *ngIf="form.get('username').touched ">
+      Please enter a valid username
+      </span>
+      <p class="text-p">Password:</p>
+      <input class="password_in" type="password" formControlName="password">
+      <span *ngIf="form.get('password').touched">
+      Please enter password
+      </span>
+      <br>
+      <button class="submit" type="submit" [disabled]="form.invalid"> Войти </button>
+    </div>
+  </div>
+</form>

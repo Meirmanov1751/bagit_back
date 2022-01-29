@@ -1,0 +1,13 @@
+<div class="box">
+  <div class="container">
+    <div class="inner">
+      <p class="img"><input type="file" [(ngModel)]="selectedMovie.image" ></p>
+      <p>Title:</p>
+      <input type="text" class="title_input" [(ngModel)]="selectedMovie.title">
+      <p>Text:</p>
+      <textarea type="text" class="text_input" placeholder="text" [(ngModel)]="selectedMovie.text"></textarea>
+      <input type="submit" class="submit"  *ngIf="selectedMovie.id == -1" (click)="createMovie()">
+    </div>
+
+  </div>
+</div>

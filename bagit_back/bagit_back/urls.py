@@ -15,23 +15,23 @@ Including another URLconf
 """
 
 from django.conf import settings
-from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-
+from fead_back.urls import router as fead_router
 from magazine.urls import router as post_router
 router = DefaultRouter()
 
+router.registry.extend(fead_router.registry)
 router.registry.extend(post_router.registry)
 app_name='check'
 urlpatterns = [
 
 
-    url(r'^auth/', include('djoser.urls')),
-    url(r'^auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
     path('magazine/', include('magazine.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls))

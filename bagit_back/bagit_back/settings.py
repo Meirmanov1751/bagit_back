@@ -48,10 +48,10 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
 
-    'allauth',
-    'allauth.account',
-
+    'chat',
     'magazine',
+    'fead_back',
+    'profiles',
 
 ]
 
@@ -169,8 +169,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTHENTICATION_BACKENDS = (
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
+
 
 SITE_ID = 1
+

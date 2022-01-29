@@ -19,8 +19,7 @@ class CommentViewSet(mixins.UpdateModelMixin,mixins.RetrieveModelMixin,mixins.Li
     queryset = Comment.objects.all()
 
     def perform_create(self, serializer):
-        author=self.request.author
-        serializer.save(author=author)
+        serializer.save()
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)

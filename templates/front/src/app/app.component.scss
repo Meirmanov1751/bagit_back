@@ -1,0 +1,152 @@
+.post-container-1{
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  margin: 0 auto;
+}
+.post-container{
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+}
+
+
+/* bottom */
+
+.bottom{
+  width: 100%;
+  height: 430px;
+  background: white;
+}
+
+.nav{
+  margin: 0 auto;
+  display: flex;
+  font-size: 15px;
+  width: 1100px;
+  height: 20px;
+}
+
+.nav-t{
+  text-align: center;
+  color: #333333;
+
+}
+
+.nav-t:hover{
+  color: blue;
+}
+
+.btn{
+  width: 220px;
+  background: white;
+  border: 0;
+}
+
+.container-bot{
+  width: 100%;
+}
+
+
+
+/* contact */
+.fed{
+  font-size: 20px;
+  font-family: "Times New Roman";
+  text-align: center;
+}
+
+.contact{
+  margin: 0 auto;
+  width: 1100px;
+  height: 400px;
+}
+
+.cont_inner{
+  display: flex;
+  width: 100%;
+}
+
+
+.cont_t{
+  text-align: center;
+  font-weight: bold;
+}
+
+.cont_t:after{
+  margin: 20px auto;
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: blue;
+}
+
+.cont{
+  width: 500px;
+  height: 100%;
+  margin-top: 20px;
+  margin-left: 15%;
+  border-left: 1px solid gray;
+}
+
+.cont-title{
+  margin-left: 50px;
+  font-size: 25px;
+}
+
+.cont-info{
+  margin-left: 50px;
+  font-size: 18px;
+}
+
+.massage{
+  width: 600px;
+  height: 400px;
+  margin-left: 150px;
+}
+
+.input_mail{
+  margin-top: 10px;
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+
+.input_mail:hover{
+  border: 1px solid blue;
+}
+
+.input_text{
+  margin-top: 30px;
+  width: 100%;
+  height: 170px;
+  border-radius: 4px;
+}
+
+.input_text:hover{
+  border: 1px solid blue;
+}
+
+
+.mes_sub {
+  margin-top: 10px;
+  width: 100%;
+  height: 45px;
+  background: #333333;
+  border-radius: 4px;
+  color: white;
+}
+
+.mes_sub:hover {
+  background: white;
+  color: #333333;
+  border: 1px solid #333333;
+}
+
+.btn-text-inf{
+  width: 100%;
+  height: 30px;
+  text-align: center;
+}

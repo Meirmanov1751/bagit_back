@@ -1,0 +1,39 @@
+<div class="post-container-1">
+  <router-outlet></router-outlet>
+</div>
+<div class="bottom">
+  <div class="post-container">
+    <div class="container-bot">
+      <div class="nav">
+        <button class="btn"><a class="nav-t" href="posts">posts</a></button>
+        <button class="btn"><a class="nav-t" href="posts_create">posts create</a></button>
+        <button class="btn"><a class="nav-t" href="/">chat</a></button>
+        <button class="btn"><a class="nav-t" href="login">login</a></button>
+        <button class="btn"><a class="nav-t" href="sing_in">sing in</a></button>
+      </div>
+      <hr>
+      <div class="contact">
+        <h3 class="cont_t">Нашы контакты</h3>
+        <div class="cont_inner">
+          <div class="massage">
+            <p class="fed">Мы ответим вам в ту же минуту.</p>
+            <input type="text" class="input_mail" [(ngModel)]="selectedMovie.email"  placeholder=" email">
+            <br>
+            <textarea type="text" class="input_text" [(ngModel)]="selectedMovie.text"  placeholder=" Ваше сообщение"></textarea>
+            <input type="submit" class="mes_sub"  (click)="Postfead()">
+          </div>
+          <div class="cont">
+            <p class="cont-title">Электронная почта:</p>
+            <p class="cont-info">daukassymov@aues.kz</p>
+            <p class="cont-title">Телефон:</p>
+            <p class="cont-info">+7(708)552-82-06</p>
+            <p class="cont-title">Наш офис:</p>
+            <p class="cont-info">Казахстан, г. Алматы</p>
+          </div>
+        </div>
+        <hr>
+        <div class="btn-text-inf">© 2022 Bagit.kz. Все права сохранены.</div>
+      </div>
+    </div>
+  </div>
+</div>

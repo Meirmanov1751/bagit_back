@@ -2,10 +2,11 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 
 
-from magazine.views import PostViewSet
+from .views import PostViewSet, CommentViewSet
 
 router = DefaultRouter()
 
+router.register(r'^posts/comment', CommentViewSet)
 router.register(r'^posts', PostViewSet)
 
 

@@ -4,6 +4,7 @@ export class Login {
 }
 
 export class Registration {
+  email: string;
   username: string;
   password: string;
 }
